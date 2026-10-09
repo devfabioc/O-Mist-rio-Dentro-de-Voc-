@@ -1,2266 +1,1305 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
-    ```
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O Mistério Dentro de Você | Prof. FaBiologia</title>
-
     <style>
-
         * {
             box-sizing: border-box;
         }
-
         html,
         body {
             margin: 0;
             width: 100%;
             height: 100%;
         }
-
         body {
-
-            background:
-                    radial-gradient(circle at 50% 45%, #102c3b 0%, #06101c 55%, #02070d 100%);
-
+            background: radial-gradient(circle at 50% 45%, #102c3b 0%, #06101c 55%, #02070d 100%);
             color: white;
-
             font-family: Arial, Helvetica, sans-serif;
-
             overflow: hidden;
-
         }
-
 
         /* ==================================================
            FUNDO ANIMADO
         ================================================== */
-
         body::before {
-
             content: "";
-
             position: fixed;
-
             width: 500px;
             height: 500px;
-
             border-radius: 50%;
-
             background: rgba(67, 221, 176, 0.08);
-
             filter: blur(80px);
-
             top: 10%;
             left: 20%;
-
             animation: orbitar 12s infinite alternate ease-in-out;
-
             pointer-events: none;
-
         }
-
 
         body::after {
-
             content: "";
-
             position: fixed;
-
             width: 450px;
             height: 450px;
-
             border-radius: 50%;
-
             background: rgba(40, 130, 180, 0.07);
-
             filter: blur(90px);
-
             right: 10%;
             bottom: 0;
-
             animation: orbitar2 15s infinite alternate ease-in-out;
-
             pointer-events: none;
-
         }
-
 
         /* ==================================================
            BARRA SUPERIOR
         ================================================== */
-
         .barra {
-
             position: fixed;
-
             top: 0;
             left: 0;
-
             width: 100%;
             height: 68px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
-
             padding: 0 28px;
-
             background: rgba(3, 12, 21, 0.88);
-
             backdrop-filter: blur(12px);
-
             border-bottom: 1px solid rgba(67, 221, 176, 0.18);
-
             z-index: 1000;
-
         }
-
 
         .marca {
-
             color: #43ddb0;
-
             font-size: 18px;
-
             font-weight: bold;
-
             letter-spacing: 1.5px;
-
         }
-
 
         .progresso {
-
             font-size: 15px;
-
             color: #b9c7d1;
-
             letter-spacing: 1px;
-
         }
-
 
         .controles {
-
             display: flex;
-
             gap: 8px;
-
         }
-
 
         .controle {
-
             width: 44px;
             height: 38px;
-
             padding: 0;
             margin: 0;
-
             border-radius: 10px;
-
             font-size: 19px;
-
             border: 1px solid #25465a;
-
             background: rgba(11, 29, 44, 0.9);
-
             color: white;
-
             cursor: pointer;
-
         }
-
 
         .controle:hover {
-
             background: #43ddb0;
-
             color: #06101c;
-
             transform: scale(1.05);
-
         }
-
 
         /* ==================================================
            TELAS
         ================================================== */
-
         .tela {
-
             width: 100vw;
             height: 100vh;
-
             display: flex;
-
             flex-direction: column;
-
             justify-content: center;
-
             align-items: center;
-
             text-align: center;
-
             padding: 90px 45px 45px;
-
             position: relative;
-
             z-index: 2;
-
             animation: aparecer 0.7s ease;
-
         }
-
 
         .escondido {
-
             display: none !important;
-
         }
-
 
         /* ==================================================
            TEXTOS
         ================================================== */
-
         h1 {
-
-            font-size: clamp(48px, 6vw, 82px);
-
+            font-size: clamp(42px, 5.5vw, 76px);
             line-height: 1.03;
-
-            margin: 0 0 24px;
-
+            margin: 0 0 20px;
             letter-spacing: -2px;
-
         }
-
 
         h2 {
-
             font-size: 38px;
-
             margin: 15px 0;
-
         }
-
 
         p {
-
-            font-size: clamp(21px, 2.3vw, 30px);
-
+            font-size: clamp(20px, 2.2vw, 28px);
             line-height: 1.35;
-
-            margin: 12px;
-
+            margin: 10px;
             max-width: 1100px;
-
         }
-
 
         .verde {
-
             color: #43ddb0;
-
         }
-
 
         .cinza {
-
             color: #b9c7d1;
-
         }
-
 
         .destaque {
-
             color: #43ddb0;
-
-            font-size: clamp(30px, 3.5vw, 48px);
-
+            font-size: clamp(26px, 3vw, 42px);
             font-weight: bold;
-
             line-height: 1.15;
-
             max-width: 1100px;
-
         }
-
 
         .pequeno {
-
             font-size: 17px;
-
             color: #8ea4b2;
-
             letter-spacing: 1px;
-
         }
-
 
         /* ==================================================
            BOTÕES
         ================================================== */
-
         button {
-
             background: rgba(16, 40, 58, 0.9);
-
             color: white;
-
             border: 2px solid #43ddb0;
-
             border-radius: 14px;
-
-            padding: 17px 34px;
-
-            font-size: 23px;
-
+            padding: 15px 30px;
+            font-size: 21px;
             font-weight: bold;
-
             cursor: pointer;
-
             transition: 0.25s;
-
-            margin: 10px;
-
+            margin: 8px;
         }
-
 
         button:hover {
-
             background: #43ddb0;
-
             color: #06101c;
-
             transform: translateY(-3px) scale(1.03);
-
             box-shadow: 0 10px 35px rgba(67, 221, 176, 0.18);
-
         }
-
 
         /* ==================================================
            ABERTURA
         ================================================== */
-
         .abertura {
-
             position: relative;
-
         }
-
 
         .abertura::before {
-
             content: "";
-
             position: absolute;
-
             width: 420px;
             height: 420px;
-
             border: 1px solid rgba(67, 221, 176, 0.14);
-
             border-radius: 50%;
-
             animation: pulsarGrande 4s infinite;
-
         }
-
 
         .abertura::after {
-
             content: "";
-
             position: absolute;
-
             width: 280px;
             height: 280px;
-
             border: 1px solid rgba(67, 221, 176, 0.22);
-
             border-radius: 50%;
-
             animation: pulsarGrande 4s infinite 1s;
-
         }
-
 
         .simbolo {
-
             font-size: 90px;
-
             margin-bottom: 15px;
-
             animation: flutuar 3s infinite ease-in-out;
-
             z-index: 2;
-
         }
-
 
         .assinatura {
-
             margin-top: 25px;
-
             font-size: 16px;
-
             color: #8ea4b2;
-
             letter-spacing: 2px;
-
             text-transform: uppercase;
-
         }
-
 
         /* ==================================================
            OPÇÕES
         ================================================== */
-
         .opcoes {
-
             display: flex;
-
             flex-wrap: wrap;
-
             justify-content: center;
-
             max-width: 1000px;
-
             margin-top: 25px;
-
         }
-
 
         /* ==================================================
-           CARDS
+           CARDS INTERATIVOS
         ================================================== */
-
         .cards {
-
             display: flex;
-
             justify-content: center;
-
-            gap: 25px;
-
+            gap: 20px;
             width: 90%;
-
             max-width: 1200px;
-
-            margin: 25px auto;
-
+            margin: 20px auto;
         }
-
 
         .card {
-
             flex: 1;
-
-            min-height: 210px;
-
-            background:
-                    linear-gradient(
-                            145deg,
-                            rgba(14, 38, 54, 0.95),
-                            rgba(7, 23, 35, 0.95)
-                    );
-
+            min-height: 190px;
+            background: linear-gradient(145deg, rgba(14, 38, 54, 0.95), rgba(7, 23, 35, 0.95));
             border: 1px solid #23475b;
-
-            border-radius: 24px;
-
-            padding: 28px;
-
+            border-radius: 20px;
+            padding: 22px;
             display: flex;
-
             flex-direction: column;
-
             justify-content: center;
-
             align-items: center;
-
             transition: 0.35s;
-
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
-
+            cursor: pointer;
         }
-
 
         .card:hover {
-
             border-color: #43ddb0;
-
-            transform: translateY(-9px);
-
-            box-shadow:
-                    0 15px 45px rgba(67, 221, 176, 0.12);
-
+            transform: translateY(-7px);
+            box-shadow: 0 15px 45px rgba(67, 221, 176, 0.12);
         }
-
 
         .icone {
-
-            font-size: 70px;
-
-            margin-bottom: 12px;
-
+            font-size: 60px;
+            margin-bottom: 8px;
         }
-
 
         .nome {
-
-            font-size: 27px;
-
+            font-size: 24px;
             font-weight: bold;
-
         }
-
 
         .descricao {
-
-            font-size: 19px;
-
+            font-size: 17px;
             color: #b9c7d1;
-
-            line-height: 1.4;
-
-            margin-top: 9px;
-
+            line-height: 1.3;
+            margin-top: 6px;
         }
-
 
         /* ==================================================
-           CADEIA
+           ESTRUTURAS DA CÉLULA (TELA 8)
         ================================================== */
-
-        .cadeia {
-
+        .celula-container {
             display: flex;
-
-            justify-content: center;
-
+            gap: 30px;
             align-items: center;
-
-            gap: 15px;
-
+            justify-content: center;
             flex-wrap: wrap;
-
-            margin: 25px;
-
+            margin-top: 15px;
         }
 
+        .celula-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 450px;
+            text-align: left;
+        }
+
+        .organela-btn {
+            background: rgba(16, 40, 58, 0.9);
+            border: 2px solid #25465a;
+            border-radius: 12px;
+            padding: 12px 18px;
+            font-size: 16px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .organela-btn:hover {
+            border-color: #43ddb0;
+            background: rgba(67, 221, 176, 0.15);
+        }
+
+        /* ==================================================
+           CADEIA INTERATIVA (ATP)
+        ================================================== */
+        .cadeia {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
 
         .bloco {
-
-            background:
-                    linear-gradient(
-                            145deg,
-                            #102f42,
-                            #0a1d2b
-                    );
-
-            border: 1px solid #2a5267;
-
-            border-radius: 20px;
-
-            padding: 23px;
-
-            min-width: 155px;
-
-            font-size: 21px;
-
+            background: linear-gradient(145deg, #102f42, #0a1d2b);
+            border: 2px solid #2a5267;
+            border-radius: 18px;
+            padding: 20px;
+            min-width: 140px;
+            font-size: 19px;
             transition: 0.3s;
-
+            cursor: pointer;
         }
-
 
         .bloco:hover {
-
             border-color: #43ddb0;
-
-            transform: translateY(-7px);
-
+            transform: translateY(-5px);
         }
-
 
         .seta {
-
             color: #43ddb0;
-
-            font-size: 36px;
-
+            font-size: 32px;
             font-weight: bold;
-
         }
-
 
         /* ==================================================
-           CÉLULA
+           CÉLULA GERAL
         ================================================== */
-
         .celula {
-
-            width: 255px;
-            height: 255px;
-
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-
-            background:
-                    radial-gradient(
-                            circle,
-                            #43ddb0 0%,
-                            #19796c 38%,
-                            #0b2935 70%,
-                            #06101c 100%
-                    );
-
-            border: 5px solid #43ddb0;
-
+            background: radial-gradient(circle, #43ddb0 0%, #19796c 38%, #0b2935 70%, #06101c 100%);
+            border: 4px solid #43ddb0;
             display: flex;
-
             justify-content: center;
-
             align-items: center;
-
-            margin: 15px;
-
-            box-shadow:
-                    0 0 50px rgba(67, 221, 176, 0.15);
-
+            box-shadow: 0 0 40px rgba(67, 221, 176, 0.15);
             animation: pulsar 3s infinite;
-
         }
-
 
         .nucleo {
-
-            width: 95px;
-            height: 95px;
-
+            width: 75px;
+            height: 75px;
             border-radius: 50%;
-
             background: #10283a;
-
             border: 3px solid white;
-
             display: flex;
-
             justify-content: center;
-
             align-items: center;
-
-            font-size: 40px;
-
-            box-shadow: 0 0 25px rgba(255,255,255,0.15);
-
+            font-size: 30px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.15);
         }
 
-
         /* ==================================================
-           DNA
+           DNA INTERATIVO
         ================================================== */
-
         .dna {
-
-            font-size: 135px;
-
+            font-size: 120px;
             margin: 10px;
-
             animation: flutuar 3s infinite;
-
             filter: drop-shadow(0 0 18px rgba(67, 221, 176, 0.18));
-
+            cursor: pointer;
+            transition: 0.3s;
         }
 
-
-        /* ==================================================
-           ATP
-        ================================================== */
-
-        .atp {
-
-            font-size: 105px;
-
-            font-weight: bold;
-
-            color: #43ddb0;
-
-            animation: energia 1.5s infinite;
-
+        .dna:hover {
+            transform: scale(1.1) rotate(10deg);
         }
-
 
         /* ==================================================
            BIOQUEST
         ================================================== */
-
         .bioquest {
-
-            font-size: clamp(55px, 8vw, 100px);
-
+            font-size: clamp(45px, 7vw, 90px);
             font-weight: bold;
-
             color: #43ddb0;
-
             letter-spacing: 4px;
-
-            margin: 15px;
-
-            text-shadow:
-                    0 0 25px rgba(67, 221, 176, 0.25);
-
+            margin: 12px;
+            text-shadow: 0 0 25px rgba(67, 221, 176, 0.25);
             animation: brilho 2.5s infinite alternate;
-
         }
-
 
         /* ==================================================
            TELA DOS PAIS
         ================================================== */
-
         .pais-box {
-
-            max-width: 1050px;
-
-            background:
-                    linear-gradient(
-                            145deg,
-                            rgba(13, 42, 58, 0.96),
-                            rgba(6, 20, 31, 0.96)
-                    );
-
+            max-width: 1000px;
+            background: linear-gradient(145deg, rgba(13, 42, 58, 0.96), rgba(6, 20, 31, 0.96));
             border: 1px solid rgba(67, 221, 176, 0.3);
-
-            border-radius: 28px;
-
-            padding: 40px;
-
-            margin: 20px;
-
-            box-shadow:
-                    0 20px 70px rgba(0,0,0,0.25);
-
+            border-radius: 24px;
+            padding: 30px;
+            margin: 15px;
+            box-shadow: 0 20px 70px rgba(0,0,0,0.25);
         }
-
 
         .pais-linha {
-
             display: flex;
-
             justify-content: center;
-
-            gap: 18px;
-
+            gap: 15px;
             flex-wrap: wrap;
-
-            margin-top: 25px;
-
+            margin-top: 20px;
         }
-
 
         .pais-item {
-
-            padding: 18px 25px;
-
-            border-radius: 16px;
-
+            padding: 15px 22px;
+            border-radius: 14px;
             background: rgba(67, 221, 176, 0.07);
-
             border: 1px solid rgba(67, 221, 176, 0.18);
-
-            font-size: 20px;
-
+            font-size: 18px;
         }
 
+        /* ==================================================
+           ESTILO ELEGANTE PARA COLÉGIO E CURSO PEC (TELA 15)
+        ================================================== */
+        .pec-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1050px;
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        .pec-card {
+            background: linear-gradient(145deg, rgba(16, 45, 64, 0.9), rgba(8, 25, 38, 0.9));
+            border: 2px solid #25465a;
+            border-radius: 20px;
+            padding: 24px;
+            text-align: left;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .pec-card:hover {
+            border-color: #43ddb0;
+            background: rgba(67, 221, 176, 0.12);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(67, 221, 176, 0.15);
+        }
+
+        .pec-card h3 {
+            color: #43ddb0;
+            margin: 0 0 10px 0;
+            font-size: 22px;
+        }
+
+        .pec-card p {
+            font-size: 17px;
+            margin: 0;
+            color: #b9c7d1;
+        }
 
         /* ==================================================
            FINAL
         ================================================== */
-
         .final {
-
-            background:
-                    radial-gradient(
-                            circle at center,
-                            rgba(67,221,176,0.08),
-                            transparent 55%
-                    );
-
+            background: radial-gradient(circle at center, rgba(67,221,176,0.08), transparent 55%);
         }
-
 
         .final-frase {
-
-            font-size: clamp(34px, 4vw, 58px);
-
+            font-size: clamp(32px, 3.8vw, 54px);
             font-weight: bold;
-
             line-height: 1.15;
-
             max-width: 1000px;
-
         }
-
 
         .final-assinatura {
-
-            margin-top: 30px;
-
+            margin-top: 25px;
             font-size: 18px;
-
             color: #8ea4b2;
-
             letter-spacing: 2px;
-
         }
-
 
         /* ==================================================
-           ANIMAÇÕES
+           BONECO MASCOTE (Fabiologuinho Interativo)
         ================================================== */
-
-        @keyframes aparecer {
-
-            from {
-
-                opacity: 0;
-
-                transform: translateY(25px) scale(0.98);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform: translateY(0) scale(1);
-
-            }
-
+        .mascote-container {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 999;
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            pointer-events: none;
+            animation: flutuarMascote 4s infinite ease-in-out;
         }
 
+        .balao-fala {
+            background: rgba(16, 40, 58, 0.95);
+            border: 2px solid #43ddb0;
+            padding: 10px 16px;
+            border-radius: 14px;
+            font-size: 14px;
+            color: #b9c7d1;
+            max-width: 210px;
+            text-align: left;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            position: relative;
+        }
+
+        .boneco {
+            width: 60px;
+            height: 80px;
+            position: relative;
+        }
+
+        .cabeca {
+            width: 44px;
+            height: 44px;
+            background: #19796c;
+            border: 2px solid #43ddb0;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 15px rgba(67,221,176,0.3);
+        }
+
+        .olhos {
+            display: flex;
+            gap: 8px;
+        }
+
+        .olho {
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            border-radius: 50%;
+            animation: piscar 4s infinite;
+        }
+
+        .corpo {
+            width: 36px;
+            height: 32px;
+            background: #102c3b;
+            border: 2px solid #43ddb0;
+            border-radius: 10px 10px 6px 6px;
+            position: absolute;
+            bottom: 0;
+            left: 12px;
+        }
+
+        @keyframes piscar {
+            0%, 96%, 98% { transform: scaleY(1); }
+            97%, 99% { transform: scaleY(0.1); }
+        }
+
+        @keyframes flutuarMascote {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* ==================================================
+           ANIMAÇÕES GERAIS
+        ================================================== */
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(25px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
 
         @keyframes pulsar {
-
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.045);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-
+            0% { transform: scale(1); }
+            50% { transform: scale(1.045); }
+            100% { transform: scale(1); }
         }
-
 
         @keyframes pulsarGrande {
-
-            0% {
-
-                transform: scale(0.85);
-
-                opacity: 0.15;
-
-            }
-
-            50% {
-
-                transform: scale(1.08);
-
-                opacity: 0.35;
-
-            }
-
-            100% {
-
-                transform: scale(0.85);
-
-                opacity: 0.15;
-
-            }
-
+            0% { transform: scale(0.85); opacity: 0.15; }
+            50% { transform: scale(1.08); opacity: 0.35; }
+            100% { transform: scale(0.85); opacity: 0.15; }
         }
-
 
         @keyframes flutuar {
-
-            0% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-12px);
-            }
-
-            100% {
-                transform: translateY(0);
-            }
-
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+            100% { transform: translateY(0); }
         }
-
 
         @keyframes energia {
-
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.15);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
         }
-
 
         @keyframes brilho {
-
-            from {
-
-                text-shadow:
-                        0 0 10px rgba(67,221,176,0.15);
-
-            }
-
-            to {
-
-                text-shadow:
-                        0 0 35px rgba(67,221,176,0.45);
-
-            }
-
+            from { text-shadow: 0 0 10px rgba(67,221,176,0.15); }
+            to { text-shadow: 0 0 35px rgba(67,221,176,0.45); }
         }
-
 
         @keyframes orbitar {
-
-            from {
-
-                transform: translate(0,0);
-
-            }
-
-            to {
-
-                transform: translate(180px,80px);
-
-            }
-
+            from { transform: translate(0,0); }
+            to { transform: translate(180px,80px); }
         }
-
 
         @keyframes orbitar2 {
-
-            from {
-
-                transform: translate(0,0);
-
-            }
-
-            to {
-
-                transform: translate(-150px,-80px);
-
-            }
-
+            from { transform: translate(0,0); }
+            to { transform: translate(-150px,-80px); }
         }
-
 
         /* ==================================================
            RESPONSIVIDADE
         ================================================== */
-
         @media (max-width: 850px) {
-
             .barra {
-
                 padding: 0 12px;
-
             }
-
-
             .marca {
-
                 font-size: 12px;
-
             }
-
-
             .progresso {
-
                 font-size: 12px;
-
             }
-
-
-            .cards {
-
+            .cards, .pec-grid {
                 flex-direction: column;
-
+                grid-template-columns: 1fr;
                 width: 95%;
-
                 gap: 10px;
-
             }
-
-
-            .card {
-
-                min-height: 130px;
-
-                padding: 18px;
-
+            .card, .pec-card {
+                min-height: 120px;
+                padding: 15px;
             }
-
-
             .icone {
-
-                font-size: 50px;
-
+                font-size: 45px;
             }
-
-
             .descricao {
-
-                font-size: 16px;
-
+                font-size: 15px;
             }
-
-
             button {
-
-                font-size: 18px;
-
-                padding: 14px 23px;
-
+                font-size: 16px;
+                padding: 12px 20px;
             }
-
-
             .pais-box {
-
-                padding: 25px;
-
+                padding: 20px;
             }
-
+            .mascote-container {
+                display: none;
+            }
         }
-
     </style>
-    ```
-
 </head>
-
 <body>
 
-```
 <!-- ==================================================
      BARRA
 ================================================== -->
-
 <div class="barra">
-
     <div class="marca">
-
         PROF. FABIOLOGIA
-
     </div>
-
-
-    <div id="progresso"
-         class="progresso">
-
-        EXPERIÊNCIA 01 / 16
-
+    <div id="progresso" class="progresso">
+        EXPERIÊNCIA 01 / 17
     </div>
-
-
     <div class="controles">
-
-        <button
-                class="controle"
-                onclick="voltar()"
-                title="Voltar">
-
-            ←
-
-        </button>
-
-
-        <button
-                class="controle"
-                onclick="inicio()"
-                title="Início">
-
-            ⌂
-
-        </button>
-
-
-        <button
-                class="controle"
-                onclick="telaCheia()"
-                title="Tela cheia">
-
-            ⛶
-
-        </button>
-
+        <button class="controle" id="btn-som" onclick="alternarSom()" title="Ligar/Desligar Som">🔊</button>
+        <button class="controle" onclick="tocarSomClique(); voltar()" title="Voltar">←</button>
+        <button class="controle" onclick="tocarSomClique(); inicio()" title="Início">⌂</button>
+        <button class="controle" onclick="tocarSomClique(); telaCheia()" title="Tela cheia">⛶</button>
     </div>
-
 </div>
-
-
 
 <!-- ==================================================
      TELA 1 — ABERTURA
 ================================================== -->
-
-<div id="tela1"
-     class="tela abertura">
-
-    <div class="simbolo">
-
-        🧬
-
-    </div>
-
-
-    <p class="verde">
-
-        EXPERIÊNCIA INTERATIVA DE CIÊNCIAS
-
-    </p>
-
-
-    <h1>
-
-        O MISTÉRIO<br>
-        DENTRO DE VOCÊ
-
-    </h1>
-
-
-    <p>
-
-        Você está vivo.
-
-    </p>
-
-
-    <p class="verde">
-
-        Mas o que está acontecendo aí dentro?
-
-    </p>
-
-
-    <button onclick="irPara(2)">
-
-        COMEÇAR →
-
-    </button>
-
-
-    <div class="assinatura">
-
-        CIÊNCIA • CURIOSIDADE • TECNOLOGIA
-
-    </div>
-
+<div id="tela1" class="tela abertura">
+    <div class="simbolo">🧬</div>
+    <p class="verde">EXPERIÊNCIA INTERATIVA DE CIÊNCIAS</p>
+    <h1>O MISTÉRIO<br>DENTRO DE VOCÊ</h1>
+    <p>Você está vivo.</p>
+    <p class="verde">Mas o que está acontecendo aí dentro?</p>
+    <button onclick="tocarSomAvancar(); irPara(2)">COMEÇAR →</button>
+    <div class="assinatura">CIÊNCIA • CURIOSIDADE • TECNOLOGIA</div>
 </div>
-
-
 
 <!-- ==================================================
      TELA 2
 ================================================== -->
-
-<div id="tela2"
-     class="tela escondido">
-
-    <p class="verde">
-
-        PRIMEIRO DESAFIO
-
-    </p>
-
-
-    <h1>
-
-        QUANTOS ÓRGÃOS<br>
-        ESTÃO TRABALHANDO AGORA?
-
-    </h1>
-
-
-    <p>
-
-        Você está parado.
-        Mas será que seu corpo está?
-
-    </p>
-
-
+<div id="tela2" class="tela escondido">
+    <p class="verde">PRIMEIRO DESAFIO</p>
+    <h1>QUANTOS ÓRGÃOS<br>ESTÃO TRABALHANDO AGORA?</h1>
+    <p>Você está parado. Mas será que seu corpo está?</p>
     <div class="opcoes">
-
-        <button onclick="mostrarResposta()">
-            5
-        </button>
-
-        <button onclick="mostrarResposta()">
-            20
-        </button>
-
-        <button onclick="mostrarResposta()">
-            50+
-        </button>
-
-        <button onclick="mostrarResposta()">
-            NÃO FAÇO IDEIA
-        </button>
-
+        <button onclick="responderDesafio2(this, false)">5</button>
+        <button onclick="responderDesafio2(this, false)">20</button>
+        <button onclick="responderDesafio2(this, true)">50+</button>
+        <button onclick="responderDesafio2(this, false)">NÃO FAÇO IDEIA</button>
     </div>
-
-
-    <div id="resposta"
-         class="escondido">
-
-        <p class="destaque">
-
-            Praticamente o corpo inteiro
-            está trabalhando agora.
-
-        </p>
-
-
-        <button onclick="irPara(3)">
-
-            CONTINUAR →
-
-        </button>
-
+    <div id="resposta" class="escondido">
+        <p id="texto-feedback-2" class="destaque">Isso! Praticamente o corpo inteiro está trabalhando agora.</p>
+        <button onclick="tocarSomAvancar(); irPara(3)">CONTINUAR →</button>
     </div>
-
 </div>
-
-
 
 <!-- ==================================================
      TELA 3
 ================================================== -->
-
-<div id="tela3"
-     class="tela escondido">
-
-    <p>
-
-        VOCÊ ESTÁ PARADO.
-
-    </p>
-
-
-    <h1>
-
-        SEU CORPO,
-
-    </h1>
-
-
-    <p class="destaque">
-
-        NÃO.
-
-    </p>
-
-
-    <p>
-
-        Bilhões de processos acontecem
-        dentro de você neste momento.
-
-    </p>
-
-
-    <button onclick="irPara(4)">
-
-        QUERO DESCOBRIR →
-
-    </button>
-
+<div id="tela3" class="tela escondido">
+    <p>VOCÊ ESTÁ PARADO.</p>
+    <h1>SEU CORPO,</h1>
+    <p class="destaque">NÃO.</p>
+    <p>Bilhões de processos acontecem dentro de você neste momento.</p>
+    <button onclick="tocarSomAvancar(); irPara(4)">QUERO DESCOBRIR →</button>
 </div>
-
-
 
 <!-- ==================================================
      TELA 4
 ================================================== -->
-
-<div id="tela4"
-     class="tela escondido">
-
-    <p class="verde">
-
-        ENTRE AGORA NO SEU CORPO
-
-    </p>
-
-
-    <h1>
-
-        O QUE ESTÁ ACONTECENDO<br>
-        AÍ DENTRO?
-
-    </h1>
-
-
+<div id="tela4" class="tela escondido">
+    <p class="verde">CLIQUE NOS ÓRGÃOS PARA INSPECIONAR</p>
+    <h1>O QUE ESTÁ ACONTECENDO<br>AÍ DENTRO?</h1>
     <div class="cards">
-
-        <div class="card">
-
-            <div class="icone">
-                ❤️
-            </div>
-
-            <div class="nome">
-                CORAÇÃO
-            </div>
-
-            <div class="descricao">
-                Bombeia sangue continuamente.
-            </div>
-
+        <div class="card" onclick="inspecionarOrgao('coracao')">
+            <div class="icone">❤️</div>
+            <div class="nome">CORAÇÃO</div>
+            <div class="descricao">Bombeia sangue continuamente.</div>
         </div>
-
-
-        <div class="card">
-
-            <div class="icone">
-                🫁
-            </div>
-
-            <div class="nome">
-                PULMÕES
-            </div>
-
-            <div class="descricao">
-                Realizam trocas gasosas.
-            </div>
-
+        <div class="card" onclick="inspecionarOrgao('pulmoes')">
+            <div class="icone">🫁</div>
+            <div class="nome">PULMÕES</div>
+            <div class="descricao">Realizam trocas gasosas.</div>
         </div>
-
-
-        <div class="card">
-
-            <div class="icone">
-                🧠
-            </div>
-
-            <div class="nome">
-                CÉREBRO
-            </div>
-
-            <div class="descricao">
-                Coordena informações e respostas.
-            </div>
-
+        <div class="card" onclick="inspecionarOrgao('cerebro')">
+            <div class="icone">🧠</div>
+            <div class="nome">CÉREBRO</div>
+            <div class="descricao">Coordena informações e respostas.</div>
         </div>
-
     </div>
-
-
-    <button onclick="irPara(5)">
-
-        MAS ISSO É SÓ O COMEÇO →
-
-    </button>
-
+    <button onclick="tocarSomAvancar(); irPara(5)">MAS ISSO É SÓ O COMEÇO →</button>
 </div>
-
-
 
 <!-- ==================================================
      TELA 5
 ================================================== -->
-
-<div id="tela5"
-     class="tela escondido">
-
-    <p>
-
-        E TUDO ISSO ACONTECE...
-
-    </p>
-
-
-    <h1>
-
-        SEM VOCÊ<br>
-        PRECISAR PENSAR.
-
-    </h1>
-
-
-    <p class="verde">
-
-        MAS COMO?
-
-    </p>
-
-
-    <button onclick="irPara(6)">
-
-        DESCOBRIR →
-
-    </button>
-
+<div id="tela5" class="tela escondido">
+    <p>E TUDO ISSO ACONTECE...</p>
+    <h1>SEM VOCÊ<br>PRECISAR PENSAR.</h1>
+    <p class="verde">MAS COMO?</p>
+    <button onclick="tocarSomAvancar(); irPara(6)">DESCOBRIR →</button>
 </div>
-
-
 
 <!-- ==================================================
-     TELA 6
+     TELA 6 (Com efeito elétrico imersivo e diferenciado)
 ================================================== -->
-
-<div id="tela6"
-     class="tela escondido">
-
-    <p class="verde">
-
-        UMA PERGUNTA
-
+<div id="tela6" class="tela escondido">
+    <p class="verde">CENTRO DE PROCESSAMENTO BIOLÓGICO</p>
+    <h1>A SUPERMÁQUINA<br>QUE REGULA O SEU MUNDO</h1>
+    <div class="icone" style="cursor: pointer; font-size: 95px;" onclick="dispararDescargaEletrica()" title="Clique para disparar a sinapse!">⚡🧠</div>
+    <p class="pequeno" style="color: #43ddb0; max-width: 800px; margin: 15px auto;">
+        Neste exato segundo, bilhões de sinapses geram eletricidade e comandos invisíveis. <strong>Toque no cérebro</strong> para disparar uma descarga neural de alto impacto e sentir o ritmo do sistema!
     </p>
-
-
-    <h1>
-
-        QUEM ESTÁ<br>
-        CONTROLANDO TUDO ISSO?
-
-    </h1>
-
-
-    <div class="icone">
-
-        🧠
-
-    </div>
-
-
-    <button onclick="irPara(7)">
-
-        O CÉREBRO →
-
-    </button>
-
+    <button onclick="tocarSomAvancar(); irPara(7)">SEGUIR O IMPULSO NERVOSO →</button>
 </div>
-
-
 
 <!-- ==================================================
      TELA 7
 ================================================== -->
-
-<div id="tela7"
-     class="tela escondido">
-
-    <p class="verde">
-
-        SISTEMA NERVOSO
-
-    </p>
-
-
-    <h1>
-
-        INFORMAÇÃO<br>
-        PRECISA VIAJAR.
-
-    </h1>
-
-
-    <div class="icone">
-
-        ⚡
-
+<div id="tela7" class="tela escondido">
+    <p class="verde">SISTEMA NERVOSO</p>
+    <h1>A REDE DE DADOS<br>MAIS RÁPIDA DA NATUREZA</h1>
+    <div class="cadeia">
+        <div class="bloco" style="font-size: 15px;">👁️ Receptores Sensoriais</div>
+        <div class="seta">⚡</div>
+        <div class="bloco" style="font-size: 15px;">🧠 Processamento Central</div>
+        <div class="seta">⚡</div>
+        <div class="bloco" style="font-size: 15px;">💪 Resposta Motora</div>
     </div>
-
-
-    <p class="destaque">
-
-        IMPULSOS NERVOSOS
-
-    </p>
-
-
-    <button onclick="irPara(8)">
-
-        CONTINUAR →
-
-    </button>
-
+    <p class="pequeno" style="margin-top: 15px;">Tudo isso orquestrado perfeitamente em frações de milissegundos.</p>
+    <button onclick="tocarSomAvancar(); irPara(8)">MERGULHAR NA CÉLULA →</button>
 </div>
-
-
 
 <!-- ==================================================
      TELA 8
 ================================================== -->
-
-<div id="tela8"
-     class="tela escondido">
-
-    <p class="verde">
-
-        AGORA VAMOS MAIS FUNDO
-
-    </p>
-
-
-    <h1>
-
-        TUDO COMEÇA<br>
-        NA CÉLULA.
-
-    </h1>
-
-
-    <div class="celula">
-
-        <div class="nucleo">
-
-            🧬
-
+<div id="tela8" class="tela escondido">
+    <p class="verde">O UNIVERSO CELULAR</p>
+    <h1>CLIQUE NAS ESTRUTURAS<br>PARA REVELAR SUAS FUNÇÕES</h1>
+    <div class="celula-container">
+        <div class="celula">
+            <div class="nucleo">🧬</div>
         </div>
-
+        <div class="celula-menu">
+            <button class="organela-btn" onclick="mostrarOrganela('mitocondria')">⚡ <strong>Mitocôndria:</strong> A usina geradora de ATP</button>
+            <button class="organela-btn" onclick="mostrarOrganela('nucleo-org')">🧬 <strong>Núcleo:</strong> O cofre do DNA e ordens</button>
+            <button class="organela-btn" onclick="mostrarOrganela('membrana')">🛡️ <strong>Membrana:</strong> O controle de fronteira celular</button>
+        </div>
     </div>
-
-
-    <button onclick="irPara(9)">
-
-        DESCER MAIS FUNDO →
-
-    </button>
-
+    <button onclick="tocarSomAvancar(); irPara(9)" style="margin-top: 25px;">DE ONDE VEM A ENERGIA? →</button>
 </div>
-
-
 
 <!-- ==================================================
      TELA 9
 ================================================== -->
-
-<div id="tela9"
-     class="tela escondido">
-
-    <p class="verde">
-
-        ENERGIA
-
-    </p>
-
-
-    <h1>
-
-        DE ONDE VEM A ENERGIA<br>
-        PARA TUDO ISSO?
-
-    </h1>
-
-
+<div id="tela9" class="tela escondido">
+    <p class="verde">MINI-DESAFIO: GERE ENERGIA</p>
+    <h1>CLIQUE NOS INGREDIENTES<br>NA ORDEM CORRETA</h1>
     <div class="cadeia">
-
-        <div class="bloco">
-
-            🍞<br><br>
-            GLICOSE
-
-        </div>
-
-
-        <div class="seta">
-
-            +
-
-        </div>
-
-
-        <div class="bloco">
-
-            🫁<br><br>
-            OXIGÊNIO
-
-        </div>
-
-
-        <div class="seta">
-
-            →
-
-        </div>
-
-
-        <div class="bloco">
-
-            ⚡<br><br>
-            ATP
-
-        </div>
-
+        <div class="bloco" id="bloco-glicose" onclick="clicarEnergia('glicose')">🍞<br><br>GLICOSE</div>
+        <div class="seta">+</div>
+        <div class="bloco" id="bloco-oxigenio" onclick="clicarEnergia('oxigenio')">🫁<br><br>OXIGÊNIO</div>
+        <div class="seta">→</div>
+        <div class="bloco" style="border-color: #43ddb0; background: rgba(67,221,176,0.1);">⚡<br><br>ATP</div>
     </div>
-
-
-    <button onclick="irPara(10)">
-
-        CONTINUAR →
-
-    </button>
-
+    <p id="feedback-atp" class="pequeno" style="margin-top: 15px; color: #43ddb0; min-height: 25px;"></p>
+    <button id="btn-avancar-9" class="escondido" onclick="tocarSomAvancar(); irPara(10)">CONTINUAR →</button>
 </div>
-
-
 
 <!-- ==================================================
      TELA 10
 ================================================== -->
-
-<div id="tela10"
-     class="tela escondido">
-
-    <p class="verde">
-
-        AGORA VAMOS MAIS FUNDO
-
-    </p>
-
-
-    <h1>
-
-        EXISTE UMA INFORMAÇÃO<br>
-        QUE AJUDA A CONSTRUIR VOCÊ.
-
-    </h1>
-
-
-    <div class="dna">
-
-        🧬
-
-    </div>
-
-
-    <p class="destaque">
-
-        DNA
-
-    </p>
-
-
-    <button onclick="irPara(11)">
-
-        CONTINUAR →
-
-    </button>
-
+<div id="tela10" class="tela escondido">
+    <p class="verde">TOQUE NA MOLÉCULA</p>
+    <h1>EXISTE UMA INFORMAÇÃO<br>QUE AJUDA A CONSTRUIR VOCÊ.</h1>
+    <div class="dna" onclick="interagirDna()" title="Clique para ativar o DNA!">🧬</div>
+    <p class="destaque">DNA</p>
+    <button onclick="tocarSomAvancar(); irPara(11)">CONTINUAR →</button>
 </div>
-
-
 
 <!-- ==================================================
      TELA 11
 ================================================== -->
-
-<div id="tela11"
-     class="tela escondido">
-
-    <p class="verde">
-
-        DNA → GENE → PROTEÍNA
-
-    </p>
-
-
-    <h1>
-
-        BIOLOGIA NÃO É<br>
-        DECORAR NOMES.
-
-    </h1>
-
-
-    <p>
-
-        É entender como as coisas
-        funcionam juntas.
-
-    </p>
-
-
-    <p class="destaque">
-
-        TUDO ESTÁ CONECTADO.
-
-    </p>
-
-
-    <button onclick="irPara(12)">
-
-        E A TECNOLOGIA? →
-
-    </button>
-
+<div id="tela11" class="tela escondido">
+    <p class="verde">DNA → GENE → PROTEÍNA</p>
+    <h1>BIOLOGIA NÃO É<br>DECORAR NOMES.</h1>
+    <p>É entender como as coisas funcionam juntas.</p>
+    <p class="destaque">TUDO ESTÁ CONECTADO.</p>
+    <button onclick="tocarSomAvancar(); irPara(12)">E A TECNOLOGIA? →</button>
 </div>
-
-
 
 <!-- ==================================================
      TELA 12
 ================================================== -->
-
-<div id="tela12"
-     class="tela escondido">
-
-    <p class="verde">
-
-        AGORA VAMOS MUDAR
-        A FORMA DE APRENDER.
-
-    </p>
-
-
-    <h1>
-
-        BIOLOGIA<br>
-        PODE SER INTERATIVA.
-
-    </h1>
-
-
-    <p>
-
-        Conteúdo + perguntas + raciocínio
-        + tecnologia.
-
-    </p>
-
-
-    <div class="bioquest">
-
-        BIOQUEST
-
-    </div>
-
-
-    <button onclick="abrirBioQuest()">
-
-        🚀 ABRIR O BIOQUEST
-
-    </button>
-
-
-    <button onclick="irPara(13)">
-
-        CONTINUAR →
-
-    </button>
-
+<div id="tela12" class="tela escondido">
+    <p class="verde">AGORA VAMOS MUDAR<br>A FORMA DE APRENDER.</p>
+    <h1>BIOLOGIA<br>PODE SER INTERATIVA.</h1>
+    <p>Conteúdo + perguntas + raciocínio + tecnologia.</p>
+    <div class="bioquest">BIOQUEST</div>
+    <button onclick="tocarSomClique(); abrirBioQuest()">🚀 ABRIR O BIOQUEST</button>
+    <button onclick="tocarSomAvancar(); irPara(13)">CONTINUAR →</button>
 </div>
-
-
 
 <!-- ==================================================
      TELA 13
 ================================================== -->
-
-<div id="tela13"
-     class="tela escondido">
-
-    <p class="verde">
-
-        PARA OS ALUNOS
-
-    </p>
-
-
-    <h1>
-
-        APRENDER É<br>
-        DESCOBRIR.
-
-    </h1>
-
-
-    <p>
-
-        E descobrir começa com uma pergunta.
-
-    </p>
-
-
-    <p class="destaque">
-
-        VOCÊ CONSEGUE PENSAR<br>
-        COMO UM CIENTISTA?
-
-    </p>
-
-
-    <button onclick="irPara(14)">
-
-        ÚLTIMO DESAFIO →
-
-    </button>
-
+<div id="tela13" class="tela escondido">
+    <p class="verde">PARA OS ALUNOS</p>
+    <h1>APRENDER É<br>DESCOBRIR.</h1>
+    <p>E descobrir começa com uma pergunta.</p>
+    <p class="destaque">VOCÊ CONSEGUE PENSAR<br>COMO UM CIENTISTA?</p>
+    <button onclick="tocarSomAvancar(); irPara(14)">ÚLTIMO DESAFIO →</button>
 </div>
-
-
 
 <!-- ==================================================
      TELA 14
 ================================================== -->
-
-<div id="tela14"
-     class="tela escondido">
-
-    <p class="verde">
-
-        UMA ÚLTIMA PERGUNTA
-
-    </p>
-
-
-    <h1>
-
-        O QUE É<br>
-        APRENDER CIÊNCIA?
-
-    </h1>
-
-
+<div id="tela14" class="tela escondido">
+    <p class="verde">UMA ÚLTIMA PERGUNTA</p>
+    <h1>O QUE É<br>APRENDER CIÊNCIA?</h1>
     <div class="cards">
-
-        <div class="card">
-
-            <div class="icone">
-                📚
-            </div>
-
-            <div class="nome">
-                DECORAR?
-            </div>
-
+        <div class="card" onclick="escolherOpcao14(this, false)">
+            <div class="icone">📚</div>
+            <div class="nome">DECORAR?</div>
+            <div class="descricao">(Estudar para esquecer depois)</div>
         </div>
-
-
-        <div class="card">
-
-            <div class="icone">
-                🧠
-            </div>
-
-            <div class="nome">
-                PENSAR?
-            </div>
-
+        <div class="card" onclick="escolherOpcao14(this, true)">
+            <div class="icone">🧠</div>
+            <div class="nome">PENSAR?</div>
+            <div class="descricao">(Compreender as conexões)</div>
         </div>
-
-
-        <div class="card">
-
-            <div class="icone">
-                🔎
-            </div>
-
-            <div class="nome">
-                INVESTIGAR?
-            </div>
-
+        <div class="card" onclick="escolherOpcao14(this, true)">
+            <div class="icone">🔎</div>
+            <div class="nome">INVESTIGAR?</div>
+            <div class="descricao">(Fazer perguntas ao mundo)</div>
         </div>
-
     </div>
-
-
-    <p class="destaque">
-
-        NÃO QUEREMOS APENAS ALUNOS
-        QUE SAIBAM RESPONDER.
-
-    </p>
-
-
-    <p>
-
-        Queremos alunos que saibam pensar.
-
-    </p>
-
-
-    <button onclick="irPara(15)">
-
-        E PARA OS PAIS?
-
-    </button>
-
+    <div id="feedback-14" class="escondido" style="margin-top: 15px;">
+        <p class="destaque" style="font-size: 22px;">Exato! Não queremos alunos que repitam, mas sim que pensem.</p>
+    </div>
+    <button onclick="tocarSomAvancar(); irPara(15)" style="margin-top: 15px;">EXCELÊNCIA NO ENSINO →</button>
 </div>
 
-
-
 <!-- ==================================================
-     TELA 15 — PAIS
+     TELA 15 — COLÉGIO E CURSO PEC
 ================================================== -->
-
-<div id="tela15"
-     class="tela escondido">
-
-    <p class="verde">
-
-        PARA QUEM ACREDITA NA EDUCAÇÃO
-
+<div id="tela15" class="tela escondido">
+    <p class="verde">COMPROMISSO COM O SEU SUCESSO</p>
+    <h1>EXCELÊNCIA QUE TRANSFORMA<br>O SEU FUTURO ACADÊMICO</h1>
+    <p class="pequeno" style="margin-bottom: 12px; color: #b9c7d1;">
+        Explore abaixo os pilares do <strong>Colégio e Curso PEC</strong> voltados para a sua aprovação:
     </p>
 
+    <div class="pec-grid">
+        <div class="pec-card" onclick="interagirPec('vestibular')">
+            <h3>🎯 Foco Absoluto em Vestibulares</h3>
+            <p>Metodologia direcionada para gabaritar exames de ponta e dominar a discursiva da UERJ.</p>
+        </div>
+        <div class="pec-card" onclick="interagirPec('pratica')">
+            <h3>🔬 Ciência Viva e Conectada</h3>
+            <p>Teoria de alto nível aliada à inovação tecnológica, tornando a Biologia fascinante.</p>
+        </div>
+        <div class="pec-card" onclick="interagirPec('raciocinio')">
+            <h3>💡 Raciocínio Crítico e Autonomia</h3>
+            <p>Estimulamos o estudante a conectar conceitos complexos, indo muito além da decoreba.</p>
+        </div>
+        <div class="pec-card" onclick="interagirPec('suporte')">
+            <h3>🤝 Acompanhamento Personalizado</h3>
+            <p>Corpo docente experiente comprometido com cada etapa da sua jornada rumo à vaga dos sonhos.</p>
+        </div>
+    </div>
 
-    <h1>
+    <button onclick="tocarSomAvancar(); irPara(16)" style="margin-top: 20px;">MENSAGEM FINAL →</button>
+</div>
 
-        ENSINAR NÃO É APENAS<br>
-        PASSAR CONTEÚDO.
-
-    </h1>
-
-
+<!-- ==================================================
+     TELA 16 — PAIS
+================================================== -->
+<div id="tela16" class="tela escondido">
+    <p class="verde">PARA QUEM ACREDITA NA EDUCAÇÃO</p>
+    <h1>ENSINAR NÃO É APENAS<br>PASSAR CONTEÚDO.</h1>
     <div class="pais-box">
-
-        <p>
-
-            É criar experiências que façam
-            o aluno <strong>querer aprender.</strong>
-
-        </p>
-
-
+        <p>É criar experiências que façam o aluno <strong>querer aprender.</strong></p>
         <div class="pais-linha">
-
-            <div class="pais-item">
-                🧠 Raciocínio
-            </div>
-
-            <div class="pais-item">
-                🔎 Curiosidade
-            </div>
-
-            <div class="pais-item">
-                💻 Tecnologia
-            </div>
-
-            <div class="pais-item">
-                🧬 Ciência
-            </div>
-
+            <div class="pais-item">🧠 Raciocínio</div>
+            <div class="pais-item">🔎 Curiosidade</div>
+            <div class="pais-item">💻 Tecnologia</div>
+            <div class="pais-item">🧬 Ciência</div>
         </div>
-
     </div>
-
-
-    <p class="destaque">
-
-        O FUTURO NÃO PRECISA DE ALUNOS
-        QUE APENAS REPITAM.
-
-    </p>
-
-
-    <button onclick="irPara(16)">
-
-        FINALIZAR →
-
-    </button>
-
+    <p class="destaque">O FUTURO NÃO PRECISA DE ALUNOS<br>QUE APENAS REPITAM.</p>
+    <button onclick="tocarSomAvancar(); irPara(17)">FINALIZAR →</button>
 </div>
 
-
-
 <!-- ==================================================
-     TELA 16 — FINAL
+     TELA 17 — FINAL
 ================================================== -->
-
-<div id="tela16"
-     class="tela final escondido">
-
-    <p class="verde">
-
-        O MISTÉRIO DENTRO DE VOCÊ
-
-    </p>
-
-
-    <h1>
-
-        APRENDER<br>
-        É DESCOBRIR.
-
-    </h1>
-
-
-    <p class="final-frase">
-
-        E descobrir<br>
-        começa com uma pergunta.
-
-    </p>
-
-
-    <p class="verde destaque">
-
-        QUAL SERÁ A SUA?
-
-    </p>
-
-
-    <div class="final-assinatura">
-
-        PROF. FABIOLOGIA<br>
-        BIOLOGIA • CIÊNCIA • TECNOLOGIA
-
-    </div>
-
-
-    <button onclick="inicio()">
-
-        ↻ RECOMEÇAR
-
-    </button>
-
+<div id="tela17" class="tela final escondido">
+    <p class="verde">O MISTÉRIO DENTRO DE VOCÊ</p>
+    <h1>APRENDER<br>É DESCOBRIR.</h1>
+    <p class="final-frase">E descobrir<br>começa com uma pergunta.</p>
+    <p class="verde destaque">QUAL SERÁ A SUA?</p>
+    <div class="final-assinatura">PROF. FABIOLOGIA • COLÉGIO E CURSO PEC<br>BIOLOGIA • CIÊNCIA • TECNOLOGIA</div>
+    <button onclick="tocarSomClique(); inicio()">↻ RECOMEÇAR</button>
 </div>
 
-
+<!-- ==================================================
+     BONECO MASCOTE (Fabiologuinho Interativo)
+================================================== -->
+<div class="mascote-container">
+    <div class="balao-fala" id="texto-mascote">Olá! Vamos explorar a biologia? 🧬</div>
+    <div class="boneco">
+        <div class="cabeca">
+            <div class="olhos">
+                <div class="olho"></div>
+                <div class="olho"></div>
+            </div>
+        </div>
+        <div class="corpo"></div>
+    </div>
+</div>
 
 <!-- ==================================================
-     JAVASCRIPT
+     JAVASCRIPT COM O NOVO EFEITO ELÉTRICO
 ================================================== -->
-
 <script>
-
-
     let telaAtual = 1;
+    const totalTelas = 17;
+    let somAtivo = true;
 
-    const totalTelas = 16;
+    let passosEnergia = { glicose: false, oxigenio: false };
 
+    const falasMascote = {
+        1: "Olá! Vamos explorar a biologia? 🧬",
+        2: "Será que você consegue acertar esse desafio?",
+        4: "Clique em cada órgão para ver um segredo!",
+        6: "ZUMMM! Sinta a descarga elétrica da sinapse! ⚡",
+        7: "O sistema nervoso conduz informações a incríveis velocidades!",
+        8: "Clique nas organelas ao lado para entender a célula!",
+        9: "Clique na Glicose e no Oxigênio para gerar energia!",
+        10: "Toque na molécula de DNA para ativá-la!",
+        12: "Tecnologia e ciência juntas no FaBiologia!",
+        15: "Conheça os pilares de excelência do Colégio e Curso PEC! 🎓",
+        17: "Fascinante, não é? Continue investigando!"
+    };
 
-    /* ==================================================
-       ESCONDER TODAS
-    ================================================== */
+    function atualizarMascote(numTela) {
+        const balao = document.getElementById("texto-mascote");
+        if (falasMascote[numTela]) {
+            balao.innerText = falasMascote[numTela];
+        } else {
+            balao.innerText = "Incrível! Vamos em frente 🚀";
+        }
+    }
+
+    function alternarSom() {
+        somAtivo = !somAtivo;
+        document.getElementById("btn-som").innerText = somAtivo ? "🔊" : "🔇";
+    }
+
+    function criarAudio(frequencia, tipo, duracao) {
+        if (!somAtivo) return;
+        try {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContext) return;
+            const ctx = new AudioContext();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            osc.type = tipo;
+            osc.frequency.setValueAtTime(frequencia, ctx.currentTime);
+
+            gain.gain.setValueAtTime(0.1, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duracao);
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            osc.start();
+            osc.stop(ctx.currentTime + duracao);
+        } catch(e) {}
+    }
+
+    // Novo som elétrico de alto impacto para a Tela 6 (Descarga Sináptica)
+    function dispararDescargaEletrica() {
+        if (!somAtivo) return;
+        try {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContext) return;
+            const ctx = new AudioContext();
+
+            // Sequência rápida de ondas em dente de serra (efeito "ZAP/ZUMM" elétrico)
+            const frequencias = [300, 900, 450, 1200, 200];
+            frequencias.forEach((freq, index) => {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(freq, ctx.currentTime + (index * 0.04));
+
+                gain.gain.setValueAtTime(0.12, ctx.currentTime + (index * 0.04));
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + (index * 0.04) + 0.08);
+
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                osc.start(ctx.currentTime + (index * 0.04));
+                osc.stop(ctx.currentTime + (index * 0.04) + 0.08);
+            });
+        } catch(e) {}
+
+        document.getElementById("texto-mascote").innerText = "ZUMMM! Descarga neural disparada a 400 km/h pelos nervos! ⚡";
+    }
+
+    function tocarSomClique() {
+        criarAudio(400, 'sine', 0.08);
+    }
+
+    function tocarSomAvancar() {
+        criarAudio(587.33, 'triangle', 0.12);
+    }
+
+    function tocarSomSucesso() {
+        criarAudio(880, 'sine', 0.15);
+    }
+
+    function tocarSomErro() {
+        criarAudio(220, 'sawtooth', 0.18);
+    }
+
+    // Interação dos Órgãos (Tela 4)
+    function inspecionarOrgao(tipo) {
+        tocarSomSucesso();
+        const balao = document.getElementById("texto-mascote");
+        if (tipo === 'coracao') {
+            balao.innerText = "O coração bate mais de 100 mil vezes por dia!";
+        } else if (tipo === 'pulmoes') {
+            balao.innerText = "Nossos pulmões têm a superfície do tamanho de uma quadra de tênis!";
+        } else if (tipo === 'cerebro') {
+            balao.innerText = "O cérebro consome cerca de 20% de toda a energia do corpo!";
+        }
+    }
+
+    // Explicação das Organelas (Tela 8)
+    function mostrarOrganela(organela) {
+        tocarSomSucesso();
+        const balao = document.getElementById("texto-mascote");
+        if (organela === 'mitocondria') {
+            balao.innerText = "Mitocôndria: Realiza a respiração celular e produz ATP!";
+        } else if (organela === 'nucleo-org') {
+            balao.innerText = "Núcleo: Abriga o DNA e comanda todas as funções celulares.";
+        } else if (organela === 'membrana') {
+            balao.innerText = "Membrana: Controla a entrada de nutrientes e saída de resíduos.";
+        }
+    }
+
+    // Mini-desafio de Energia (Tela 9)
+    function clicarEnergia(ingrediente) {
+        tocarSomClique();
+        passosEnergia[ingrediente] = true;
+        document.getElementById("bloco-" + ingrediente).style.borderColor = "#43ddb0";
+        document.getElementById("bloco-" + ingrediente).style.background = "rgba(67,221,176,0.2)";
+
+        if (passosEnergia.glicose && passosEnergia.oxigenio) {
+            tocarSomSucesso();
+            document.getElementById("feedback-atp").innerText = "⚡ Sucesso! Respiração celular ativada com ATP gerado!";
+            document.getElementById("btn-avancar-9").classList.remove("escondido");
+            document.getElementById("texto-mascote").innerText = "Energia produzida com sucesso! ⚡";
+        } else {
+            document.getElementById("feedback-atp").innerText = "Falta o outro ingrediente essencial!";
+        }
+    }
+
+    // Interação do DNA (Tela 10)
+    function interagirDna() {
+        tocarSomSucesso();
+        document.getElementById("texto-mascote").innerText = "Fita ativada! Aqui estão todas as instruções para construir você! 🧬";
+    }
+
+    // Interação de Destaque no PEC (Tela 15)
+    function interagirPec(pilar) {
+        tocarSomSucesso();
+        const balao = document.getElementById("texto-mascote");
+        if (pilar === 'vestibular') {
+            balao.innerText = "Foco total na aprovação com foco nas exigências da UERJ!";
+        } else if (pilar === 'pratica') {
+            balao.innerText = "Aulas dinâmicas que conectam a ciência direto à inovação!";
+        } else if (pilar === 'raciocinio') {
+            balao.innerText = "Aqui o aluno desenvolve raciocínio lógico e argumentação!";
+        } else if (pilar === 'suporte') {
+            balao.innerText = "Professores dedicados a caminhar lado a lado com você rumo ao topo!";
+        }
+    }
 
     function esconderTodas() {
-
-        document
-            .querySelectorAll(".tela")
-            .forEach(function(tela) {
-
-                tela.classList.add("escondido");
-
-            });
-
+        document.querySelectorAll(".tela").forEach(function(tela) {
+            tela.classList.add("escondido");
+        });
     }
-
-
-    /* ==================================================
-       IR PARA UMA TELA
-    ================================================== */
 
     function irPara(numero) {
-
         esconderTodas();
-
-
-        const destino =
-            document.getElementById("tela" + numero);
-
-
+        const destino = document.getElementById("tela" + numero);
         if (destino) {
-
             destino.classList.remove("escondido");
-
         }
-
-
         telaAtual = numero;
-
-
         atualizarProgresso();
-
+        atualizarMascote(numero);
     }
-
-
-    /* ==================================================
-       PROGRESSO
-    ================================================== */
 
     function atualizarProgresso() {
-
-        const numeroFormatado =
-            String(telaAtual).padStart(2, "0");
-
-
-        document
-            .getElementById("progresso")
-            .innerText =
-            "EXPERIÊNCIA " +
-            numeroFormatado +
-            " / " +
-            String(totalTelas).padStart(2, "0");
-
+        const numeroFormatado = String(telaAtual).padStart(2, "0");
+        document.getElementById("progresso").innerText =
+            "EXPERIÊNCIA " + numeroFormatado + " / " + String(totalTelas).padStart(2, "0");
     }
 
+    function responderDesafio2(botao, correto) {
+        document.querySelectorAll("#tela2 .opcoes button").forEach(btn => {
+            btn.style.borderColor = "#25465a";
+            btn.style.background = "rgba(16, 40, 58, 0.9)";
+        });
 
-    /* ==================================================
-       RESPOSTA DA PERGUNTA
-    ================================================== */
+        if (correto) {
+            tocarSomSucesso();
+            botao.style.borderColor = "#43ddb0";
+            botao.style.background = "rgba(67, 221, 176, 0.3)";
+            document.getElementById("texto-feedback-2").innerText = "Perfeito! O corpo inteiro trabalha sem parar, mesmo em repouso absoluto.";
+            document.getElementById("texto-mascote").innerText = "Mandou muito bem! 🎯";
+        } else {
+            tocarSomErro();
+            botao.style.borderColor = "#ff6b6b";
+            botao.style.background = "rgba(255, 107, 107, 0.2)";
+            document.getElementById("texto-feedback-2").innerText = "Na verdade é muito mais! Praticamente o corpo inteiro está em atividade.";
+            document.getElementById("texto-mascote").innerText = "Quase lá! Tente pensar no todo 😉";
+        }
 
-    function mostrarResposta() {
-
-        document
-            .getElementById("resposta")
-            .classList
-            .remove("escondido");
-
+        document.getElementById("resposta").classList.remove("escondido");
     }
 
+    function escolherOpcao14(card, correto) {
+        document.querySelectorAll("#tela14 .card").forEach(c => {
+            c.style.borderColor = "#23475b";
+            c.style.background = "linear-gradient(145deg, rgba(14, 38, 54, 0.95), rgba(7, 23, 35, 0.95))";
+        });
 
-    /* ==================================================
-       VOLTAR
-    ================================================== */
+        if (correto) {
+            tocarSomSucesso();
+            card.style.borderColor = "#43ddb0";
+            card.style.background = "rgba(67, 221, 176, 0.15)";
+            document.getElementById("texto-mascote").innerText = "Exatamente! Pensar como cientista! 💡";
+        } else {
+            tocarSomErro();
+            card.style.borderColor = "#ff6b6b";
+            card.style.background = "rgba(255, 107, 107, 0.1)";
+            document.getElementById("texto-mascote").innerText = "Decorar não é o foco principal! Pense além...";
+        }
+
+        document.getElementById("feedback-14").classList.remove("escondido");
+    }
 
     function voltar() {
-
         if (telaAtual > 1) {
-
             irPara(telaAtual - 1);
-
         }
-
     }
-
-
-    /* ==================================================
-       INÍCIO
-    ================================================== */
 
     function inicio() {
-
         irPara(1);
-
     }
-
-
-    /* ==================================================
-       TELA CHEIA
-    ================================================== */
 
     function telaCheia() {
-
         if (!document.fullscreenElement) {
-
-            document.documentElement
-                .requestFullscreen()
-                .catch(function() {});
-
+            document.documentElement.requestFullscreen().catch(function() {});
         } else {
-
-            document
-                .exitFullscreen()
-                .catch(function() {});
-
+            document.exitFullscreen().catch(function() {});
         }
-
     }
-
-
-    /* ==================================================
-       BIOQUEST
-    ================================================== */
 
     function abrirBioQuest() {
-
-        window.open(
-            "https://devfabioc.github.io/BioQuest/",
-            "_blank"
-        );
-
+        window.open("https://devfabioc.github.io/BioQuest/", "_blank");
     }
 
-
-    /* ==================================================
-       TECLADO
-    ================================================== */
-
-    document.addEventListener(
-        "keydown",
-        function(event) {
-
-            if (event.key === "ArrowRight") {
-
-                if (telaAtual < totalTelas) {
-
-                    irPara(telaAtual + 1);
-
-                }
-
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "ArrowRight") {
+            if (telaAtual < totalTelas) {
+                tocarSomAvancar();
+                irPara(telaAtual + 1);
             }
-
-
-            if (event.key === "ArrowLeft") {
-
-                voltar();
-
-            }
-
-
-            if (event.key === "Home") {
-
-                inicio();
-
-            }
-
-
-            if (event.key === "F11") {
-
-                event.preventDefault();
-
-                telaCheia();
-
-            }
-
         }
-    );
-
-
-    /* ==================================================
-       INICIALIZAÇÃO
-    ================================================== */
+        if (event.key === "ArrowLeft") {
+            tocarSomClique();
+            voltar();
+        }
+        if (event.key === "Home") {
+            tocarSomClique();
+            inicio();
+        }
+        if (event.key === "F11") {
+            event.preventDefault();
+            telaCheia();
+        }
+    });
 
     atualizarProgresso();
-
 </script>
-```
-
 </body>
-
 </html>
